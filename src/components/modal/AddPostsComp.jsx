@@ -31,11 +31,11 @@ function AddPostsComp(props) {
 
   return (
     props.Show && (
-      <div className="w-full fixed top-0 py-10 bg-zinc-800 bg-opacity-25 right-0 bottom-0 left-0">
-        <div className="z-20 bg-white rounded-lg mx-auto w-3/5 lg:w-2/4 py-4 px-4">
+      <div className="w-full px-8 lg:px-0 fixed top-0 py-10 bg-zinc-800 bg-opacity-25 right-0 bottom-0 left-0">
+        <div className="z-20 bg-white rounded-lg mx-auto w-full lg:w-2/4 py-4 px-4">
           <div className="flex justify-between">
             <p className="font-bold text-shadow-300 text-zinc-400">
-              ADD NEW POSTS!
+              ADD NEW TODO
             </p>
             <button onClick={() => props.Close(false)}>
               <svg
@@ -75,7 +75,7 @@ function AddPostsComp(props) {
           </div>
           <button
             onClick={handleSubmit}
-            className="bg-blue-400 text-white font-bold w-full rounded-lg py-2 mt-2 "
+            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold w-full rounded-lg py-2 mt-2 "
           >
             ADD
           </button>

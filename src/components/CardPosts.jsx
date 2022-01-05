@@ -39,7 +39,9 @@ function CardPosts() {
             </div>
 
             <div className="mt-2">
-              <p className="text-gray-500 font-semibold">{item?.title}</p>
+              <p className="text-gray-500 lg:text-md text-xs font-semibold">
+                {item?.title}
+              </p>
             </div>
 
             <div className="flex gap-2 mt-2 ">

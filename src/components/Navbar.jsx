@@ -2,10 +2,10 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="w-full bg-blue-500 px-4">
+    <div className="w-full bg-gradient-to-r from-blue-500 to-purple-500 px-4">
       <div className="flex items-center justify-between py-2">
         <div>
-          <p className="text-white font-bold">Redux</p>
+          <p className="text-white font-mono">Todo App</p>
         </div>
         <div>
           <button>
