@@ -1,9 +1,4 @@
-import {
-  GET_POSTS,
-  ADD_POSTS,
-  UPDATE_POSTS,
-  DELETE_POSTS,
-} from "../../actions/PostsAction";
+import { GET_POSTS, ADD_POSTS, DELETE_POSTS } from "../../actions/PostsAction";
 
 const initialState = {
   // get posts
