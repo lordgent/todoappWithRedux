@@ -32,7 +32,7 @@ function AddPostsComp(props) {
   return (
     props.Show && (
       <div className="w-full fixed top-0 py-10 bg-zinc-800 bg-opacity-25 right-0 bottom-0 left-0">
-        <div className="z-20 bg-white rounded-lg mx-auto w-2/4 py-4 px-4">
+        <div className="z-20 bg-white rounded-lg mx-auto w-3/5 lg:w-2/4 py-4 px-4">
           <div className="flex justify-between">
             <p className="font-bold text-shadow-300 text-zinc-400">
               ADD NEW POSTS!
