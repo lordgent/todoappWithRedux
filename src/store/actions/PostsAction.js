@@ -71,8 +71,6 @@ export const addPosts = (data) => {
         });
         if (response.status === 201) {
           swal("Good job!", "Upload new Posts Success!", "success");
-          console.log("2. berhasil mendapatkan data");
-          console.log(response.data);
         }
       } catch (error) {
         console.log(error);

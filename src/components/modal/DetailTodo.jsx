@@ -1,50 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addPosts, getPosts } from "../../store/actions/PostsAction";
-function AddPostsComp(props) {
-  const dispatch = useDispatch();
-  const { addResult } = useSelector((state) => state.PostsReducer);
-  const [form, setform] = useState({
-    title: "",
-    description: "",
-    status: false,
-  });
 
-  console.log(addResult);
+function DetailTodo(props) {
+  const { item } = props;
 
-  const handleChange = (e) => {
-    setform({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(
-      addPosts({
-        title: form.title,
-        description: form.description,
-        status: form.status,
-      })
-    );
-  };
-
-  useEffect(() => {
-    if (addResult) {
-      dispatch(getPosts());
-    }
-  }, [addResult]);
+  const handleChange = () => {};
+  const handleSubmit = () => {};
 
   return (
     props.Show && (
-      <div className="w-full px-8 lg:px-0 fixed top-0 py-10 bg-zinc-800 bg-opacity-25 right-0 bottom-0 left-0">
-        <div className="z-20 bg-white rounded-lg mx-auto w-full lg:w-2/4 py-4 px-4">
+      <div className="fixed bg-zinc-800 bg-opacity-20 pt-20 top-0 right-0 bottom-0 left-0">
+        <div className="w-3/5 lg:w-1/4 px-2 py-2 mx-auto bg-white rounded-lg">
           <div className="flex justify-between">
-            <p className="font-bold text-shadow-300 text-zinc-400">
-              ADD NEW TODO
-            </p>
+            <p className="text-xs text-zinc-500">Detail Todo</p>
             <button onClick={() => props.Close(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,13 +29,13 @@ function AddPostsComp(props) {
               </svg>
             </button>
           </div>
-
           <div className="w-full  shadow-lg py-2 bg-gray-100 mt-4 rounded-lg px-2">
             <input
               type="text"
               name="title"
               className="w-full bg-gray-100 text-zinc-500 px-2 "
               placeholder="title"
+              defaultValue={item?.title}
               onChange={handleChange}
             />
           </div>
@@ -78,6 +45,7 @@ function AddPostsComp(props) {
               name="description"
               className="w-full bg-gray-100 text-zinc-500 px-2"
               placeholder="description"
+              defaultValue={item?.description}
               onChange={handleChange}
             />
           </div>
@@ -85,7 +53,7 @@ function AddPostsComp(props) {
             onClick={handleSubmit}
             className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold w-full rounded-lg py-2 mt-2 "
           >
-            ADD
+            UPDATE
           </button>
         </div>
       </div>
@@ -93,4 +61,4 @@ function AddPostsComp(props) {
   );
 }
 
-export default AddPostsComp;
+export default DetailTodo;

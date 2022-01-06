@@ -1,22 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts, deletePosts } from "../store/actions/PostsAction";
+import DetailTodo from "./modal/DetailTodo";
 
 import Error from "./response/Error";
 import Loading from "./response/Loading";
 function CardPosts() {
   const dispatch = useDispatch();
-  const { resultPosts, PostsLoading, PostsError } = useSelector(
+  const [detail, setdetail] = useState(false);
+  const [data, setdata] = useState(null);
+  const { deleteResult, resultPosts, PostsLoading, PostsError } = useSelector(
     (state) => state.PostsReducer
   );
-  console.log(resultPosts);
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (deleteResult) {
+      dispatch(getPosts());
+    }
+  }, [deleteResult]);
+
   const handleDelete = (id) => {
-    console.log(id + " this id");
     dispatch(deletePosts(id));
+  };
+  const handleShow = (item) => {
+    setdetail(true);
+    setdata(item);
   };
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -28,7 +40,7 @@ function CardPosts() {
         resultPosts?.map((item, idx) => (
           <div
             key={idx}
-            className="border-2 border-box bg-zinc-50 border-gray-100  py-4 px-4 rounded-md shadow-xl"
+            className="border-2 border-box border-gray-100  py-4 px-4 rounded-lg shadow-xl"
           >
             <div className="w-full h-40 bg-gray-200 rounded-lg">
               <img
@@ -43,7 +55,11 @@ function CardPosts() {
                 {item?.title}
               </p>
             </div>
-
+            <DetailTodo
+              Show={detail}
+              item={data}
+              Close={() => setdetail(false)}
+            />
             <div className="flex gap-2 mt-2 ">
               <p onClick={() => handleDelete(item?.id)}>
                 <svg
@@ -61,7 +77,7 @@ function CardPosts() {
                   />
                 </svg>
               </p>
-              <p>
+              <p onClick={() => handleShow(item)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-blue-500"
