@@ -21,7 +21,7 @@ function CardPosts() {
     if (deleteResult) {
       dispatch(getPosts());
     }
-  }, [deleteResult]);
+  }, [dispatch, deleteResult]);
 
   const handleDelete = (id) => {
     dispatch(deletePosts(id));

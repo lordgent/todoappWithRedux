@@ -35,7 +35,7 @@ function AddPostsComp(props) {
     if (addResult) {
       dispatch(getPosts());
     }
-  }, [addResult]);
+  }, [dispatch, addResult]);
 
   return (
     props.Show && (
